@@ -1,22 +1,21 @@
-## Why run Huginn with Docker
+## 通过 Docker 部署（[官方文档](https://github.com/huginn/huginn/blob/master/doc/docker/install.md)）
 
-You can play with or deploy Huginn inside of [Docker](https://www.docker.com/).
+1. 按照 [部署说明](https://docs.docker.com/get-docker/) 部署 Docker
 
-Getting Huginn up and running using docker is quick and painless once you have docker installed. The docker container is suitable for production and evaluation. Huginn uses environmental variables for configuration, so rather than having a .env file, the Docker container expects variables to be passed into the launch command.
+2. 配置环境变量 root用户密码、端口， docker 部署 mysql，然后进入容器内以命令行配置以下内容
 
-## Running the Container
+建立数据库 `{Huginn数据库名}`
 
-### Quick start to check out Huginn
+新增用户 `{USERNAME}` ，设置密码 `'{PASSWORD}'`
 
-1. Install Docker using the [install instructions](https://docs.docker.com/get-docker/)
-* Start your Huginn container using `docker run -it -p 3000:3000 ghcr.io/huginn/huginn`
-* Open Huginn in the browser [http://localhost:3000](http://localhost:3000)
-* Log in to your Huginn instance using the username `admin` and password `password`
+提前为数据库的用户 `{USERNAME}` 授予读写权限
 
-## Configuration and linking to a database container
+3. 使用以下命令配置环境变量并启动 Huginn 容器（国内环境请使用镜像源替代 `ghcr.io/` ）：
 
-Follow the [instructions on the docker hub registry](https://hub.docker.com/r/huginn/huginn/) on how to configure Huginn using environment variables and linking the container to an external MySQL or PostgreSQL database.
+```
+sudo docker run --name {需设定的Huginn容器名称} --network deployment -p {需映射到的本机端口}:3000 -e HUGINN_DATABASE_ADAPTER={mysql版本} -e HUGINN_DATABASE_HOST={mysql容器名称} -e HUGINN_DATABASE_PORT={mysql容器映射到的本地端口} -e HUGINN_DATABASE_NAME={Huginn数据库名} -e HUGINN_DATABASE_USERNAME={USERNAME} -e HUGINN_DATABASE_PASSWORD='{PASSWORD}' -e TIMEZONE='Beijing' --restart always ghcr.io/huginn/huginn
+```
 
-## Running each Huginn process in a separate container
+3. 在浏览器中打开 Huginn：http://{host}:3000
 
-With the `huginn/huginn-single-process` image you can easily run each process needed for Huginn in a separate container and scale them individually when needed. Have a look at the [Docker hub](https://hub.docker.com/r/huginn/huginn-single-process/) and the [documentation for the container](https://github.com/huginn/huginn/tree/master/docker/single-process)
+4. 使用默认用户名 `admin` 和密码 `password` 登录，修改用户名与密码后配置 Agent
