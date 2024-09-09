@@ -4,11 +4,11 @@
 
 2. 配置环境变量 root用户密码、端口， docker 部署 mysql，然后进入容器内以命令行配置以下内容
 
-建立数据库 `{Huginn数据库名}`
+    建立数据库 `{Huginn数据库名}`
 
-新增用户 `{USERNAME}` ，设置密码 `'{PASSWORD}'`
+    新增用户 `{USERNAME}` ，设置密码 `'{PASSWORD}'`
 
-提前为数据库的用户 `{USERNAME}` 授予读写权限
+    提前为数据库的用户 `{USERNAME}` 授予读写权限
 
 3. 使用以下命令配置环境变量并启动 Huginn 容器（国内环境请使用镜像源替代 `ghcr.io/` ）：
 
