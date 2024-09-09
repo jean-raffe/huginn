@@ -85,48 +85,48 @@ sudo docker run --name {需设定的Huginn容器名称} --network deployment -p 
 
 [![部署](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-Huginn 可以在 Heroku 的免费版本上运行，[但存在显著的限制](https://github.com/jean-raffe/huginn/blob/master/doc/heroku/install.md)。对于非实验性用途，我们强烈建议使用 Heroku 的 1GB 付费计划或我们的 Docker 容器。
+Huginn 可以在 Heroku 的免费版本上运行，[但存在显著的限制](https://github.com/jean-raffe/huginn/blob/master/doc/heroku/install.md)。对于非实验性用途，我们强烈建议使用 Heroku 的 1GB 付费计划，或改为通过 Docker 部署。
 
 ### 本地部署 （说明 / [视频教程](http://www.youtube.com/watch?v=xJTwaRl2_Iw)）
 
 1. 克隆仓库
-
+        ```
         $ git clone git@github.com:cantino/huginn.git
         $ cd huginn
-
+        ```
 2. 安装 [Ruby](http://www.ruby-lang.org/en/downloads/) 和 [Ruby Gems](https://rubygems.org/pages/download)（如果尚未安装）
 3. 安装 rake 和 bundle（如果尚未安装）：
-
+        ```
         $ gem install rake bundle
-
+        ```
 4. 安装 Huginn 的依赖项
-
+        ```
         $ bundle install
-
+        ```
 5. 安装 [MySQL](http://dev.mysql.com/downloads/)
 6. 启动 MySQL 服务器：
-
+        ```
         $ mysql.server start
-
+        ```
 6. 将 *.env.example* 文件复制为 *.env*：
-
+        ```
         $ cp .env.example .env
-
+        ```
 8. 创建 `APP_SECRET_TOKEN`：
-
+        ```
         $ rake secret
-
+        ```
 7. 编辑 *.env* 文件，至少更新我们刚刚创建的 `APP_SECRET_TOKEN` 变量。
 8. 使用一些示例数据创建开发环境的 MySQL 数据库：
-
+        ```
         $ rake db:create
         $ rake db:migrate
         $ rake db:seed
-
+        ```
 8. 完成所有步骤后，启动本地服务器：
-
+        ```
         $ foreman start  
-
+        ```
     打开浏览器，访问 [http://localhost:3000/](http://localhost:3000/)，使用用户名 "admin" 和密码 "password" 登录。
    
 ### 开发
