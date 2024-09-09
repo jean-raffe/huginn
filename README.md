@@ -29,7 +29,7 @@ Huginn 是一个为你在线执行自动化任务的代理构建系统。它们�
 
 ### 加入我们！
 
-想为 Huginn 做出贡献吗？我们鼓励所有形式的贡献！你可以改善 UI、[分享您的新代理，帮助撰写中文 wiki 文档、教程](https://github.com/jean-raffe/huginn/wiki)，或者尝试解决 [官方项目中被标记为 "help wanted" 的问题](https://github.com/huginn/huginn/issues?direction=desc&labels=help+wanted&page=1&sort=created&state=open)。欢迎 fork、添加测试，并提交 pull request！
+想为 Huginn 做出贡献吗？我们鼓励所有形式的贡献！你可以改善 UI、[分享您的新代理，帮助撰写中文 wiki 文档、教程](https://github.com/jean-raffe/huginn/wiki)，或者尝试解决 [官方项目中被标记为 "help wanted" 的问题](https://github.com/huginn/huginn/issues?direction=desc&labels=help+wanted&page=1&sort=created&state=open)。
 
 真的很想解决某个问题或添加新功能吗？想通过解决社区问题赚点零花钱？请查看 [Bountysource 上的当前悬赏](https://www.bountysource.com/trackers/282580-huginn)。
 
