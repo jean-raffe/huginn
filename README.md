@@ -1,4 +1,4 @@
-![Huginn](https://raw.github.com/huginn/huginn/master/media/huginn-logo.png)
+![Huginn](https://raw.github.com/jean-raffe/huginn/master/media/huginn-logo.png)
 # Huginn ——  您的代理待命中。
 -----
 
@@ -6,12 +6,12 @@
 
 Huginn 是一个为你在线执行自动化任务的代理构建系统。它们可以读取网页、监控事件，并代表你采取行动。Huginn 的代理通过创建和消费事件，将它们沿着有向图传播。你可以将其视为一种可以在你自己服务器上修改的 IFTTT 或 Zapier。你始终知道谁掌握了你的数据——是你自己。
 
-![名字的由来](https://raw.githubusercontent.com/huginn/huginn/master/doc/imgs/the-name.png)
+![名字的由来](https://raw.githubusercontent.com/jean-raffe/huginn/master/doc/imgs/the-name.png)
 
 #### 使用 Huginn 可以做以下事情：
 
 * 追踪天气并在明天要下雨（或下雪）时收到邮件提醒（"别忘了带伞！"）
-* 列出你关心的术语，当这些术语在 Twitter 上的出现频率发生变化时收到邮件通知。（例如，想知道机器学习领域有趣的事情发生了吗？Huginn 会监控“machine learning”在 Twitter 上的讨论，当讨论量激增时告诉你。）
+* 列出你关心的术语，当这些术语在 Twitter 上的出现频率发生变化时收到邮件通知。（例如，想知道机器学习领域有趣的事情发生了吗？Huginn 可以监控 Twitter 上关于“机器学习”的讨论，并在讨论量激增时告诉你。）
 * 监控航空旅行或购物优惠信息
 * 关注项目名称在 Twitter 上的提及情况，并获得相关更新
 * 抓取网页，当网页发生变化时接收邮件通知
@@ -25,15 +25,15 @@ Huginn 是一个为你在线执行自动化任务的代理构建系统。它们�
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/huginn/huginn?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Changelog #199](https://img.shields.io/badge/changelog-%23199-lightgrey.svg)](https://changelog.com/podcast/199)
 
-加入我们的 [Gitter 聊天室](https://gitter.im/huginn/huginn) 一起讨论这个项目。
+加入官方的 [Gitter 聊天室](https://gitter.im/huginn/huginn) 一起讨论这个项目。
 
 ### 加入我们！
 
-想为 Huginn 做出贡献吗？我们鼓励所有形式的贡献！你可以改善 UI、[添加新代理](https://github.com/huginn/huginn/wiki/Creating-a-new-agent)、撰写[文档和教程](https://github.com/huginn/huginn/wiki)，或者尝试解决 [标记为 "help wanted" 的问题](https://github.com/huginn/huginn/issues?direction=desc&labels=help+wanted&page=1&sort=created&state=open)。请 fork、添加测试，并提交 pull request！
+想为 Huginn 做出贡献吗？我们鼓励所有形式的贡献！你可以改善 UI、[添加新代理、撰写中文 wiki 文档和教程](https://github.com/jean-raffe/huginn/wiki)，或者尝试解决 [官方项目中被标记为 "help wanted" 的问题](https://github.com/huginn/huginn/issues?direction=desc&labels=help+wanted&page=1&sort=created&state=open)。欢迎 fork、添加测试，并提交 pull request！
 
 真的很想解决某个问题或添加新功能吗？想通过解决社区问题赚点零花钱？请查看 [Bountysource 上的当前悬赏](https://www.bountysource.com/trackers/282580-huginn)。
 
-有一个很棒的想法但还不准备贡献代码？可以前往我们的 [官方“建议代理”讨论帖](https://github.com/huginn/huginn/issues/353) 提出你的建议！
+有一个很棒的想法但还不准备贡献代码？可以前往官方项目中的 [“建议代理”讨论帖](https://github.com/huginn/huginn/issues/353) 提出你的建议！
 
 ## 示例
 
@@ -41,15 +41,15 @@ Huginn 是一个为你在线执行自动化任务的代理构建系统。它们�
 
 接下来是一些示例截图，下面还附有操作指南，帮助你快速入门。
 
-![代理列表示例](https://raw.githubusercontent.com/huginn/huginn/master/doc/imgs/your-agents.png)
+![代理列表示例](https://raw.githubusercontent.com/jean-raffe/huginn/master/doc/imgs/your-agents.png)
 
-![事件流程图](https://raw.githubusercontent.com/huginn/huginn/master/doc/imgs/diagram.png)
+![事件流程图](https://raw.githubusercontent.com/jean-raffe/huginn/master/doc/imgs/diagram.png)
 
-![监测 Twitter 上的讨论高峰](https://raw.githubusercontent.com/huginn/huginn/master/doc/imgs/peaks.png)
+![监测 Twitter 上的讨论高峰](https://raw.githubusercontent.com/jean-raffe/huginn/master/doc/imgs/peaks.png)
 
-![记录你的位置信息](https://raw.githubusercontent.com/huginn/huginn/master/doc/imgs/my-locations.png)
+![记录你的位置信息](https://raw.githubusercontent.com/jean-raffe/huginn/master/doc/imgs/my-locations.png)
 
-![创建新代理](https://raw.githubusercontent.com/huginn/huginn/master/doc/imgs/new-agent.png)
+![创建新代理](https://raw.githubusercontent.com/jean-raffe/huginn/master/doc/imgs/new-agent.png)
 
 ## 部署 Huginn
 
@@ -81,9 +81,11 @@ sudo docker run --name {需设定的Huginn容器名称} --network deployment -p 
 
 ### 在 Heroku 上部署
 
-尝试在 Heroku 上使用 Huginn：[![部署](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)（设置需要几分钟时间。在等待过程中，请阅读 [文档](https://github.com/huginn/huginn/blob/master/doc/heroku/install.md)，并确保在启动后点击“查看”！）
+尝试在 Heroku 上使用 Huginn
 
-Huginn 可以在 Heroku 的免费版本上运行，[但存在显著的限制](https://github.com/huginn/huginn/blob/master/doc/heroku/install.md)。对于非实验性用途，我们强烈建议使用 Heroku 的 1GB 付费计划或我们的 Docker 容器。
+[![部署](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+Huginn 可以在 Heroku 的免费版本上运行，[但存在显著的限制](https://github.com/jean-raffe/huginn/blob/master/doc/heroku/install.md)。对于非实验性用途，我们强烈建议使用 Heroku 的 1GB 付费计划或我们的 Docker 容器。
 
 ### 本地部署 （说明 / [视频教程](http://www.youtube.com/watch?v=xJTwaRl2_Iw)）
 
@@ -142,7 +144,7 @@ Huginn 可以在 Heroku 的免费版本上运行，[但存在显著的限制](ht
 
 现在，Huginn 代理可以作为外部 gems 编写，并通过 `ADDITIONAL_GEMS` 环境变量添加到你的 Huginn 安装中。更多信息请参阅 `.env.example` 中的 `Additional Agent gems` 部分。
 
-如果你想编写自己的 Huginn Agent gem，请参阅 [huginn_agent](https://github.com/huginn/huginn_agent)。
+如果你想编写自己的 Huginn Agent gem，请参阅官方的 [huginn_agent](https://github.com/huginn_/huginn_agent) 项目。
 
 我们的总体目标是鼓励复杂和特定用途的代理作为 Gems 编写，同时继续将新的一般用途代理添加到 Huginn 核心库中。
 
@@ -150,7 +152,7 @@ Huginn 可以在 Heroku 的免费版本上运行，[但存在显著的限制](ht
 
 #### 为私有开发进行设置
 
-请参阅维基中的 [私有开发说明](https://github.com/huginn/huginn/wiki/Private-development-instructions)。
+请参阅 [维基](https://github.com/jean-raffe/huginn/wiki) 中的私有开发说明。
 
 #### 启用 WeatherAgent
 
