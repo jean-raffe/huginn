@@ -51,36 +51,76 @@ And now, some example screenshots.  Below them are instructions to get you start
 
 ![Making a new agent](https://raw.githubusercontent.com/huginn/huginn/master/doc/imgs/new-agent.png)
 
-## Getting Started
+## 部署 Huginn
 
-### Docker
+### Docker 部署（[官方文档](https://github.com/huginn/huginn/blob/master/doc/docker/install.md)）
 
-The quickest and easiest way to check out Huginn is to use the official Docker image. Have a look at the [documentation](https://github.com/huginn/huginn/blob/master/doc/docker/install.md).
+#### 运行容器
 
-### Local Installation
+1. 按照 [部署说明](https://docs.docker.com/get-docker/) 部署 Docker
 
-If you just want to play around, you can simply fork this repository, then perform the following steps:
+2. 配置环境变量 root用户密码、端口， docker 部署 mysql，然后进入容器内以命令行配置以下内容
 
-* Run `git remote add upstream https://github.com/huginn/huginn.git` to add the main repository as a remote for your fork.
-* Copy `.env.example` to `.env` (`cp .env.example .env`) and edit `.env`, at least updating the `APP_SECRET_TOKEN` variable.
-* Make sure that you have MySQL or PostgreSQL installed. (On a Mac, the easiest way is with [Homebrew](http://brew.sh/). If you're going to use PostgreSQL, you'll need to prepend all commands below with `DATABASE_ADAPTER=postgresql`.)
-* Run `bundle` to install dependencies
-* Run `bundle exec rake db:create`, `bundle exec rake db:migrate`, and then `bundle exec rake db:seed` to create a development database with some example Agents.
-* Run `bundle exec foreman start`, visit [http://localhost:3000/][localhost], and login with the username of `admin` and the password of `password`.
-* Setup some Agents!
-* Read the [wiki][wiki] for usage examples and to get started making new Agents.
-* Periodically run `git fetch upstream` and then `git checkout master && git merge upstream/master` to merge in the newest version of Huginn.
+建立数据库 `{Huginn数据库名}`
 
-Note: By default, email messages are intercepted in the `development` Rails environment, which is what you just setup.  You can view
-them at [http://localhost:3000/letter_opener](http://localhost:3000/letter_opener). If you'd like to send real email via SMTP when playing
-with Huginn locally, set `SEND_EMAIL_IN_DEVELOPMENT` to `true` in your `.env` file.
+新增用户 `{USERNAME}` ，设置密码 `'{PASSWORD}'`
 
-If you need more detailed instructions, see the [Novice setup guide][novice-setup-guide].
+提前为数据库的用户 `{USERNAME}` 授予读写权限
 
-[localhost]: http://localhost:3000/
-[wiki]: https://github.com/huginn/huginn/wiki
-[novice-setup-guide]: https://github.com/huginn/huginn/wiki/Novice-setup-guide
+3. 使用以下命令配置环境变量并启动 Huginn 容器（国内环境请使用镜像源替代 `ghcr.io/` ）：
 
+```
+sudo docker run --name {需设定的Huginn容器名称} --network deployment -p {需映射到的本机端口}:3000 -e HUGINN_DATABASE_ADAPTER={mysql版本} -e HUGINN_DATABASE_HOST={mysql容器名称} -e HUGINN_DATABASE_PORT={mysql容器映射到的本地端口} -e HUGINN_DATABASE_NAME={Huginn数据库名} -e HUGINN_DATABASE_USERNAME={USERNAME} -e HUGINN_DATABASE_PASSWORD='{PASSWORD}' -e TIMEZONE='Beijing' --restart always ghcr.io/huginn/huginn
+```
+
+3. 在浏览器中打开 Huginn：http://{host}:3000
+
+4. 使用默认用户名 `admin` 和密码 `password` 登录，修改用户名与密码后配置 Agent
+
+***
+
+### 本地部署 （说明 / [视频教程](http://www.youtube.com/watch?v=xJTwaRl2_Iw)）
+
+1. 克隆仓库
+
+        $ git clone git@github.com:cantino/huginn.git
+        $ cd huginn
+
+2. 安装 [Ruby](http://www.ruby-lang.org/en/downloads/) 和 [Ruby Gems](https://rubygems.org/pages/download)（如果尚未安装）
+3. 安装 rake 和 bundle（如果尚未安装）：
+
+        $ gem install rake bundle
+
+4. 安装 Huginn 的依赖项
+
+        $ bundle install
+
+5. 安装 [MySQL](http://dev.mysql.com/downloads/)
+6. 启动 MySQL 服务器：
+
+        $ mysql.server start
+
+6. 将 *.env.example* 文件复制为 *.env*：
+
+        $ cp .env.example .env
+
+8. 创建 `APP_SECRET_TOKEN`：
+
+        $ rake secret
+
+7. 编辑 *.env* 文件，至少更新我们刚刚创建的 `APP_SECRET_TOKEN` 变量。
+8. 使用一些示例数据创建开发环境的 MySQL 数据库：
+
+        $ rake db:create
+        $ rake db:migrate
+        $ rake db:seed
+
+8. 完成所有步骤后，启动本地服务器：
+
+        $ foreman start  
+
+    打开浏览器，访问 [http://localhost:3000/](http://localhost:3000/)，使用用户名 "admin" 和密码 "password" 登录。
+   
 ### Develop
 
 All agents have specs! And there's also acceptance tests that simulate running Huginn in a headless browser.
